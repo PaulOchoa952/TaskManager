@@ -10,6 +10,7 @@
 <body>
    <div class="container">
     <h3>Gestor de Tareas</h3>
+
     <form class="formulario">
         <div class="caja">
             <label for="nombre">Nombre:</label>
@@ -21,12 +22,14 @@
         </div>
         <button type="submit">Agregar</button>
 
-        <div class="tareas" id="tareas-container">
-            <!-- Aquí se mostrarán las tareas -->
-        </div>
+        
         
     </form>
 
+    <div class="tareas" id="tareas-container">
+        <!-- Aquí se mostrarán las tareas -->
+    </div>
+    
    </div> 
  <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -40,7 +43,7 @@
 
             const nombre = nombreInput.value;
             const descripcion = descripcionInput.value;
-
+            //excepcion para validar que no este vacia el nombre y la descripcion
             if (nombre.trim() === '' || descripcion.trim() === '') {
                 alert('Por favor, ingrese un nombre y una descripción válidos.');
                 return;
@@ -48,7 +51,25 @@
 
             const tareaDiv = document.createElement('div');
             tareaDiv.classList.add('tarea');
-            tareaDiv.innerHTML = `<h4>${nombre}</h4><p>${descripcion}</p>`;
+
+            // Estructura de la tarea
+        tareaDiv.innerHTML = `
+            <h4>${nombre}</h4>
+            <p>${descripcion}</p>
+            <button class="completar">Completar</button>
+            <button class="borrar">Borrar</button>
+        `;
+
+         // ... Código para borrar una tarea ...
+         tareaDiv.querySelector('.borrar').addEventListener('click', function () {
+            tareasContainer.removeChild(tareaDiv);
+        });
+
+        // ... Código para completar una tarea ...
+        tareaDiv.querySelector('.completar').addEventListener('click', function () {
+            tareaDiv.classList.toggle('completada');
+        });
+
             tareasContainer.appendChild(tareaDiv);
 
             // Limpiar los campos del formulario
