@@ -52,3 +52,22 @@ button{
 button:hover{
   background-color: rgb(0, 124, 240);  
 }
+
+/* ... Tus estilos anteriores ... */
+
+.tareas {
+    background-color: bisque;
+    margin-top: 20px; /* Agrega un margen superior para separar del formulario */
+    padding: 10px; /* Agrega un espacio interno para las tareas */
+    border-radius: 5px;
+    color: black;
+}
+
+.tarea {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px; /* Agrega margen inferior para separar las tareas */
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
