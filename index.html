@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TaskManager</title>
+</head>
+
+<body>
+   <div class="container">
+    <h3>Gestor de Tareas</h3>
+    <form class="formulario">
+        <div class="caja">
+            <label for="nombre">Nombre:</label>
+            <input type="text" placeholder="Ingrese su nombre:" id="nombre">
+        </div>
+        <div class="caja">
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" placeholder="Descripcion:" id="Descripcion">
+        </div>
+        <button type="submit">Agregar</button>
+
+        <div class="tareas" id="tareas-container">
+            <!-- Aquí se mostrarán las tareas -->
+        </div>
+        
+    </form>
+
+   </div> 
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const formulario = document.querySelector('.formulario');
+        const nombreInput = document.getElementById('nombre');
+        const descripcionInput = document.getElementById('Descripcion');
+        const tareasContainer = document.getElementById('tareas-container');
+
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nombre = nombreInput.value;
+            const descripcion = descripcionInput.value;
+
+            if (nombre.trim() === '' || descripcion.trim() === '') {
+                alert('Por favor, ingrese un nombre y una descripción válidos.');
+                return;
+            }
+
+            const tareaDiv = document.createElement('div');
+            tareaDiv.classList.add('tarea');
+            tareaDiv.innerHTML = `<h4>${nombre}</h4><p>${descripcion}</p>`;
+            tareasContainer.appendChild(tareaDiv);
+
+            // Limpiar los campos del formulario
+            nombreInput.value = '';
+            descripcionInput.value = '';
+        });
+    });
+</script>
+  
+   
+</body>
+</html>
